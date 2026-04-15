@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minutescape - Browser Prototype</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="layout">
+      <section class="left">
+        <h1>Minutescape</h1>
+        <p class="tagline">Dodge. Upgrade. Repeat. Survive 5 minutes.</p>
+
+        <div class="hud">
+          <div><span>Time</span><strong id="time">00:00</strong></div>
+          <div><span>Currency</span><strong id="currency">0</strong></div>
+          <div><span>HP</span><strong id="hp">3</strong></div>
+          <div><span>Level</span><strong id="level">1</strong></div>
+        </div>
+
+        <canvas id="arena" width="720" height="420" aria-label="Game arena"></canvas>
+
+        <div class="controls">
+          <button id="startBtn">Start Run</button>
+          <button id="restartBtn" class="ghost">Reset</button>
+        </div>
+
+        <p id="status" class="status" aria-live="polite">
+          Move with WASD / Arrow keys. Avoid red bullets.
+        </p>
+
+        <div class="mobile-controls" aria-label="Mobile movement controls">
+          <button data-dir="up" class="move-btn">↑</button>
+          <div>
+            <button data-dir="left" class="move-btn">←</button>
+            <button data-dir="down" class="move-btn">↓</button>
+            <button data-dir="right" class="move-btn">→</button>
+          </div>
+        </div>
+      </section>
+
+      <aside class="right">
+        <h2>Upgrades</h2>
+        <div id="shop" class="shop"></div>
+
+        <h3>How this prototype matches Minutescape</h3>
+        <ul>
+          <li>Bullet-dodging survival in real time.</li>
+          <li>Currency generated while alive.</li>
+          <li>Incremental upgrades during a run.</li>
+          <li>Win by surviving 5:00 without losing all HP.</li>
+        </ul>
+      </aside>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+:root {
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: Inter, system-ui, sans-serif;
+  background: radial-gradient(circle at top, #191d2f, #0b0e17 68%);
+  color: #eef2ff;
+}
+
+.layout {
+  max-width: 1200px;
+  margin: 1.5rem auto;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 1rem;
+}
+
+.left,
+.right {
+  background: rgba(18, 23, 40, 0.9);
+  border: 1px solid #2d3350;
+  border-radius: 12px;
+  padding: 1rem;
+}
+
+h1 { margin: 0; }
+.tagline { color: #aeb6d9; margin: 0.3rem 0 1rem; }
+
+.hud {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+}
+
+.hud > div {
+  padding: 0.45rem;
+  border-radius: 10px;
+  background: #202744;
+  border: 1px solid #313d64;
+  display: flex;
+  flex-direction: column;
+}
+
+.hud span { font-size: 0.82rem; color: #bdc6ee; }
+.hud strong { margin-top: 0.2rem; font-size: 1.05rem; }
+
+#arena {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  border: 1px solid #3a4267;
+  background: #0b0f1f;
+}
+
+.controls {
+  margin-top: 0.8rem;
+  display: flex;
+  gap: 0.6rem;
+}
+
+button {
+  border: 0;
+  border-radius: 9px;
+  padding: 0.52rem 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+  background: #73f0c4;
+  color: #071724;
+}
+
+button.ghost { background: #dae2ff; }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.status {
+  margin-top: 0.75rem;
+  color: #ccd4fb;
+  min-height: 1.3rem;
+}
+
+.mobile-controls {
+  margin-top: 0.6rem;
+  display: none;
+  gap: 0.4rem;
+}
+
+.move-btn {
+  min-width: 48px;
+}
+
+.shop { display: grid; gap: 0.6rem; }
+
+.card {
+  background: #1b2138;
+  border: 1px solid #313d64;
+  border-radius: 10px;
+  padding: 0.7rem;
+}
+
+.card h4 { margin: 0 0 0.35rem; }
+.card p { margin: 0 0 0.55rem; color: #b7c1ea; font-size: 0.93rem; }
+.card button { width: 100%; }
+
+ul { color: #c8d1f6; padding-left: 1.15rem; }
+
+@media (max-width: 900px) {
+  .layout { grid-template-columns: 1fr; }
+  .hud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mobile-controls { display: flex; align-items: center; }
+}
