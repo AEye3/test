@@ -24,6 +24,7 @@ const state = {
   player: { x: canvas.width / 2, y: canvas.height / 2, r: 9, speed: 220 },
   bullets: [],
   keys: {},
+  invulnerableFor: 0,
 };
 
 const upgrades = [
@@ -135,6 +136,10 @@ function resetState() {
   state.player.y = canvas.height / 2;
   state.bullets = [];
   state.keys = {};
+  state.invulnerableFor = 0;
+  spawnAccumulator = 0;
+  incomeAccumulator = 0;
+  lastTs = 0;
 
   for (const u of upgrades) u.level = 0;
 
@@ -192,6 +197,7 @@ function update(dt) {
   if (!state.running) return;
 
   state.time += dt;
+  state.invulnerableFor = Math.max(0, state.invulnerableFor - dt);
   incomeAccumulator += dt;
   spawnAccumulator += dt;
 
@@ -229,9 +235,10 @@ function update(dt) {
 
   for (let i = state.bullets.length - 1; i >= 0; i -= 1) {
     const b = state.bullets[i];
-    if (Math.hypot(b.x - p.x, b.y - p.y) < b.r + p.r) {
+    if (Math.hypot(b.x - p.x, b.y - p.y) < b.r + p.r && state.invulnerableFor <= 0) {
       state.bullets.splice(i, 1);
       state.hp -= 1;
+      state.invulnerableFor = 0.8;
       setStatus("Hit! Keep moving.");
       if (state.hp <= 0) {
         state.running = false;
@@ -277,6 +284,9 @@ function draw() {
   }
 
   ctx.fillStyle = "#73f0c4";
+  if (state.invulnerableFor > 0) {
+    ctx.fillStyle = "#f7f08a";
+  }
   ctx.beginPath();
   ctx.arc(state.player.x, state.player.y, state.player.r, 0, Math.PI * 2);
   ctx.fill();
@@ -298,6 +308,25 @@ window.addEventListener("keydown", (e) => {
 window.addEventListener("keyup", (e) => {
   state.keys[e.key] = false;
 });
+
+for (const btn of document.querySelectorAll("[data-dir]")) {
+  const dir = btn.getAttribute("data-dir");
+  const keyMap = { up: "ArrowUp", down: "ArrowDown", left: "ArrowLeft", right: "ArrowRight" };
+  const key = keyMap[dir];
+  if (!key) continue;
+  btn.addEventListener("pointerdown", () => {
+    state.keys[key] = true;
+  });
+  btn.addEventListener("pointerup", () => {
+    state.keys[key] = false;
+  });
+  btn.addEventListener("pointercancel", () => {
+    state.keys[key] = false;
+  });
+  btn.addEventListener("lostpointercapture", () => {
+    state.keys[key] = false;
+  });
+}
 
 $startBtn.addEventListener("click", () => {
   if (state.running) return;

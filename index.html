@@ -26,7 +26,18 @@
           <button id="restartBtn" class="ghost">Reset</button>
         </div>
 
-        <p id="status" class="status">Move with WASD / Arrow keys. Avoid red bullets.</p>
+        <p id="status" class="status" aria-live="polite">
+          Move with WASD / Arrow keys. Avoid red bullets.
+        </p>
+
+        <div class="mobile-controls" aria-label="Mobile movement controls">
+          <button data-dir="up" class="move-btn">↑</button>
+          <div>
+            <button data-dir="left" class="move-btn">←</button>
+            <button data-dir="down" class="move-btn">↓</button>
+            <button data-dir="right" class="move-btn">→</button>
+          </div>
+        </div>
       </section>
 
       <aside class="right">

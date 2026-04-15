@@ -7,6 +7,7 @@ This is a browser prototype inspired by the Steam game **Minutescape**: dodge bu
 - Real-time bullet-dodging arena on HTML Canvas.
 - Currency earned each second while your run is active.
 - Upgrade shop with scaling costs.
+- Keyboard and mobile directional controls.
 - Win condition at 5:00 survival, lose condition at 0 HP.
 
 ## Run locally

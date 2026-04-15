@@ -83,6 +83,16 @@ button:disabled { opacity: 0.5; cursor: not-allowed; }
   min-height: 1.3rem;
 }
 
+.mobile-controls {
+  margin-top: 0.6rem;
+  display: none;
+  gap: 0.4rem;
+}
+
+.move-btn {
+  min-width: 48px;
+}
+
 .shop { display: grid; gap: 0.6rem; }
 
 .card {
@@ -101,4 +111,5 @@ ul { color: #c8d1f6; padding-left: 1.15rem; }
 @media (max-width: 900px) {
   .layout { grid-template-columns: 1fr; }
   .hud { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .mobile-controls { display: flex; align-items: center; }
 }
