@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Minutescape (Simple)</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main class="game">
+      <h1>Minutescape</h1>
+      <p class="subtitle">Simple GitHub Pages Edition</p>
+
+      <section class="stats" aria-label="Game stats">
+        <div><strong>Minute:</strong> <span id="minute">0</span>/10</div>
+        <div><strong>Energy:</strong> <span id="energy">5</span></div>
+        <div><strong>Room:</strong> <span id="room">Lobby</span></div>
+      </section>
+
+      <section class="panel">
+        <h2>Story</h2>
+        <p id="story">Reach the Exit by minute 10 before your energy hits 0.</p>
+      </section>
+
+      <section class="panel">
+        <h2>Actions</h2>
+        <div id="actions" class="actions"></div>
+        <button id="waitBtn" class="ghost">Wait (1 minute)</button>
+      </section>
+
+      <section class="panel log-panel">
+        <h2>Log</h2>
+        <ul id="log" class="log"></ul>
+      </section>
+
+      <div class="controls">
+        <button id="restartBtn">Restart</button>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
